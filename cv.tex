@@ -21,386 +21,193 @@
 %
 %-----------------------------------------------------------------------------------------------------------------------------------------------%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Medium Length Professional CV
-% LaTeX Template
-% Version 2.0 (8/5/13)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% Original author:
-% Rishi Shah 
-%
-% Important note:
-% This template requires the resume.cls file to be in the same directory as the
-% .tex file. The resume.cls file provides the resume style used for structuring the
-% document.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%	DOCUMENT DEFINITION
 %----------------------------------------------------------------------------------------
 
-\documentclass{resume} % Use the custom resume.cls style
-\usepackage[pro]{fontawesome5}
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,12pt]{article}
 
-\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
-\usepackage{hyperref}
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
 \usepackage{fontawesome5}
-\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
-\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+
+%debug page outer frames
+%\usepackage{showframe}
 
 
-\name{Christina P. Walker} % Your name
-\address{she/her/hers} % Your address --> I changed to pronouns
-%\address{} % Your secondary address (optional)
-\address{{\href{mailto:walke667@purdue.edu}{\faEnvelope}} \\ \href{https://christinapwalker.com}{\faIcon{laptop}}}  % Your email and twitter
+% job listing environments
+\newenvironment{jobshort}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    }
+    {
+    }
 
+\newenvironment{joblong}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
+    }
+    {
+    \end{itemize}
+    \end{minipage}    
+    }
+
+
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
 \begin{document}
 
-%----------------------------------------------------------------------------------------
-%	EDUCATION SECTION
-%----------------------------------------------------------------------------------------
-
+% non-numbered pages
+\pagestyle{empty} 
 
 %----------------------------------------------------------------------------------------
-% EXPERIENCE SECTIONS
+%	TITLE
 %----------------------------------------------------------------------------------------
 
-%Interests/ Keywords/ Summary
-% \section{Summary}
-% This CV is automatically generated and deployed using the \href{https://github.com/jitinnair1/autoCV}{autoCV} template along with GitHub Actions such that a new version of the CV is compiled, published and ready for use when the cv.tex file is updated. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
+% \begin{tabularx}{\linewidth}{ @{}X X@{} }
+% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
+% \raisebox{-0.05\height}\faGithub\ username \ | \
+% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
+% \end{tabularx}
 
-\begin{rSection}{Education}
-
-{\bf Purdue University, West Lafayette, IN} \hfill {\em Expected: 2026} 
-\\ {\it Ph.D., Political Science
-\\ Major Field: Comparative Politics, Minor Field: Political Research Methodology}
-
-{\bf Purdue University, West Lafayette, IN} \hfill {\em 2023} 
-\\ {\it M.A., Political Science}
-
-{\bf Oakland University, Rochester, MI} \hfill {\em 2020} 
-\\ {\it B.A., International Relations \& French Language and Literature \hfill 
-\\Magna Cum Laude, Graduate of the Honors College, Departmental Honors}
-%Minor in Linguistics \smallskip \\
-
-{\it Additional Training:}
-\\{\it EITM Summer Workshop, Atlanta, GA}
-\hfill {\em 2024} 
-\\{\it ICPSR Summer Workshop, Ann Arbor, MI}
-\hfill {\em 2022} 
-\\{\it oTree Workshop, Virtual}
-\hfill {\em 2022}
-
-\end{rSection}
-
-\begin{rSection}{Peer-Reviewed Publications} \textit{* denotes undergraduate co-author, ** denotes graduate co-author}
-
-Zulli, Diana, Diana Deyoe**, \textbf{Christina Walker}, and Meaghan McKasy. 2024. “Is it funny or a trend?: Examining US news humor on TikTok.” The Communication Review: 1-17. \href{https://doi.org/10.1080/10714421.2024.2359802}{\faIcon{file-pdf} }
-
-
-\textbf{Walker, Christina P.}, Daniel S. Schiff, and Kaylyn Jackson Schiff. 2024. “Merging AI Incidents Research with Political Misinformation Research: Introducing the Political Deepfakes Incidents Database.” Thirty-Eighth Conference on Innovative Applications of Artificial Intelligence. \href{https://ojs.aaai.org/index.php/AAAI/article/view/30349/32389}{\faIcon{file-pdf} }
-
-\begin{itemize}
-    \item Winner of the Inaugural CASMI AI Incidents and Best Practices Paper Award
-\end{itemize}
-
-\textbf{Walker, Christina P.} and Evan Cramer**. 2023. “Conflict  to Contagion: Examining the Relationship Between Disease and Conflict in Africa.”  Politics \& the Life Sciences. \href{https://www.cambridge.org/core/services/aop-cambridge-core/content/view/BC1388BEDE0C769F1AABDA8C2C4DC2C5/S0730938423000278a.pdf/contagion_to_unrest_investigating_the_link_between_disease_and_civil_unrest_in_africa.pdf}{\faIcon{file-pdf} }
-
-\textbf{Walker, Christina P.}, and Terri L. Towner. 2022. ``Framing ISIL: The Media's Photo Discrimination between Africa, Europe, and the United States." Digital War: 1-20. 
-\href{https://link.springer.com/article/10.1057/s42984-022-00044-7}{\faIcon{file-pdf}}  
-
-\textbf{Walker, Christina P.}, Terri L. Towner, and Lea Hilliker*. 2022. “Choosing Reviewers: Predictors of Undergraduate Manuscript Evaluations.” PS: Political Science \& Politics: 1–5. 
-\href{https://www.cambridge.org/core/journals/ps-political-science-and-politics/article/choosing-reviewers-predictors-of-undergraduate-manuscript-evaluations/AE52D3F5932D2FACDA39DB3212522D45}{\faIcon{file-pdf} }
-
-Ghazi, Ghazi**, and \textbf{Christina P. Walker}. 2021. “Posts to Protests: Looking at Instagram’s Role in the 2019 Lebanese Revolution.” Journal of Middle Eastern Politics and Policy (7): 31–37. \href{https://www.researchgate.net/profile/Christina-Walker-5/publication/361944213_Spring_2021_Posts_to_Protests_Looking_at_Instagram's_Role_in_the_2019_Lebanese_Revolution/links/62cdd11e6151ad090b960b72/Spring-2021-Posts-to-Protests-Looking-at-Instagrams-Role-in-the-2019-Lebanese-Revolution.pdf}{\faIcon{file-pdf}}
-
-\textbf{Walker, Christina P.}, Terri L. Towner, Rosalee A. Clawson, Zoe M. Oxley, Christine L. Nemacheck, \& Ronald Rapoport. 2021. “Learning through Peer Reviewing and Publishing in the Pi Sigma Alpha Undergraduate Journal of Politics: Twenty Years Later.” PS: Political Science \& Politics 54(2): 346–52. \href{https://www.cambridge.org/core/journals/ps-political-science-and-politics/article/learning-through-peer-reviewing-and-publishing-in-the-pi-sigma-alpha-undergraduate-journal-of-politics-twenty-years-later/CF2910FBB8C381BAFEBE32A663D21172}{\faIcon{file-pdf}}
-
-Kubicek, Paul, and \textbf{Christina Walker}. 2020. “Do Truth and Reconciliation Committees Improve Human Rights? Evidence From Africa.” The Journal of the Middle East and Africa 11(3): 295–310. \href{https://www.tandfonline.com/doi/abs/10.1080/21520844.2020.1808401}{\faIcon{file-pdf}}
-
-\end{rSection}
-
-\begin{rSection}{Book Chapters}
-
-\textbf{Walker, Christina P.}. Forthcoming. “Framing False Information: Examining Legislators' Discourse Surrounding January 6th.” \textit{The Year in C-SPAN Archives Research.} West Lafayette, Indiana: Purdue University Press.
-
-\end{rSection}
-
-\begin{rSection}{Works in Progress}
-
-\textbf{Walker, Christina P.} and Joan C. Timoneda. “Is ChatGPT Conservative or Liberal? A Novel Approach to Assess Ideological Bias in Generative AI Models.” \textit{RR at Political Science Research and Methods.}
-
-\end{rSection}
-
-
-% \begin{rSection}{Manuscripts Under Review}
-
-% Timoneda, Joan, \textbf{Christina P. Walker}, and Kayla Young. “Is More Time Always Better? Revisiting the No Time-Varying Confounder Assumption for Two-Way Fixed Effects Models.” \textit{Political Analysis.}
-
-
-% \textbf{Walker, Christina P.} “Gendered Central Banks: The Public's Perception of the US Fed Chair.” \textit{Comparative Political Studies.}
-
-% \textbf{Walker, Christina P.}, Diana Zulli, and Jeremy Foote. “Political Communication on TikTok: Insights into Uses, Reception, and Methods.” Letter of Inquiry accepted to the \textit{Journal of Quantitative Description: Digital Media.}
-
-% \textbf{Walker, Christina P.} and Owura Kuffuor**. “Fake News' Infiltration: Examining the Spread of Fake News in Ghana's 2016 and 2020 Elections.” \textit{The Journal of the Middle East and Africa.}
-
-
-% \end{rSection}
-%--------------------------------------------------------------------------------
-%    in progress
-%-----------------------------------------------------------------------------------------------
-% \begin{rSection}{Manuscripts in Progress}
-
-%  Grillos, Tara and \textbf{Christina P. Walker}. “First-Speaker Advantage: Does Speaker Order Influence a Team's Decision in a Deliberative Democracy Game?”
-
-
-% \textbf{Walker, Christina P.} “Bias in GPT-3: Can GPT-3 be Used for Fact-Checking?”
-
-% \end{rSection}
-%----------------------------------------------------------------------------------------
-%	Conferencing
-%----------------------------------------------------------------------------------------
-
-% GRANTS SCHOLARSHIPS %
-\begin{rSection}{Grants and Fellowships}
-{\it External}
-\\National Science Foundation EITM Summer Institute (Emory University, 2024)
-\\APSA Travel Grant (Information, Technology, \& Politics Section, 2023) (\$250)
-\\The Year in C-SPAN Archives Research Chapter (C-SPAN Archives, 2023) (\$1,500)
-\\Graduate Student Travel Grant (MapleMeth, 2023) (\$500)
-\\Student Caucus Travel Grant (National Communication Association, 2022) (\$200)
-\\Research Grant (Association for the Study of the Middle East and Africa, 2022) (\$2,500)
-\\Travel Grant (International Studies Association, 2022) (\$700)
-\\Howard Penniman Scholarship for Graduate Study (Pi Sigma Alpha, 2021) (\$2,000)
-\\Chapter Activity Grant (Pi Sigma Alpha, 2019-2020) (\$2,000)
-\\Foreign Policy Leadership Development Program (John Quincy Adams Society, 2020)
-\\Research Grant (Association for the Study of the Middle East and Africa, 2019) (\$2,500)
-\\Wilson Trust Scholarship (2017) (\$5,000, recurring for 4 years)
-
-{\it Internal - Purdue University}
-\\PROMISE Award (College of Liberal Arts, 2024) (\$500)
-\\Robert A. McDaniel Graduate Fund Grant (College of Liberal Arts, 2024) (\$800)
-\\PROMISE Award (College of Liberal Arts, 2023) (\$750)
-\\Robert A. McDaniel Graduate Fund Grant (College of Liberal Arts, 2023) (\$1,000)
-\\Department Research Grant (\$162)
-\\PROMISE Award (College of Liberal Arts, 2022) (\$750)
-\\Travel Grant (Graduate Student Government, 2022) (\$500)
-\\ICPSR Scholarship (Political Science Department, 2022) (\$2,600)
-\\PROMISE Award (College of Liberal Arts, 2021) (\$750)
-
-{\it Internal - Oakland University}
-\\Undergraduate Research Grant (Honors College, 2019) (\$250)
-\\Vincent Khapoya Scholarship (Political Science Department, 2019) (\$2,500)
-\\Provost Undergraduate Research Award (2018) (\$500)
-\\Distinguished Scholar Award (2017) (\$5,000, recurring for 4 years)
-
-\end{rSection}
-
-% AWARDS HONORS %
-\begin{rSection}{Awards and Honors}
-
-{\it External}
-\\AI Incidents \& Best Practices Paper Award, Center for Advancing Safety of Machine Learning (2024) (\$2,000)
-
-{\it Internal - Purdue University}
-\\Nominee for the IBM Ph.D. Fellowship (2024)
-\\Nominee for the Apple Scholars in AI/ML Fellowship (2024)
-\\Nominee for the Google Ph.D. Fellowship (2024)
-\\Best Major Field Paper (2024) (\$1,000)
-\\University Special Recognition Award (2024) (\$1,500)
-\\Best Graduate Peer-Reviewed Journal Publication x2 (2024) (\$500)
-\\Best Graduate Grant Submission, Purdue University (2024) (\$250)
-\\Best Graduate Peer-Reviewed Journal Publication (2023) (\$250)
-\\Best Graduate Grant Submission (2023) (\$250)
-\\Best Graduate Peer-Reviewed Journal Publication (2022) (\$250)
-\\Best Graduate Grant Submission (2022) (\$250)
-
-{\it Internal - Oakland University}
-\\Thesis Award in Political Science (Honors College, 2020)
-\\Thesis with Distinction (Honors College, 2020)
-\\President’s List (2020)
-\\Outstanding Student Officer (Office for Student Involvement, 2020)
-\\Dean’s List, 2017-2020 
-
-\end{rSection}
-
-\begin{rSection}{Media Appearances}
-Chow, Andrew R. 2024. ``AI’s Underwhelming Impact on the 2024 Elections." Time Magazine. \href{https://time.com/7131271/ai-2024-elections/}{\faIcon{newspaper}} 
-
-Tubman, Kadia. 2024. ``Viral celebrity deepfake ad warns of AI being used 'trick you into not voting.'" Scripps News. \href{https://www.scrippsnews.com/politics/disinformation-desk/viral-celebrity-deepfake-ad-warns-of-ai-being-used-trick-you-into-not-voting}{\faIcon{video}} 
-    
-\end{rSection}
-
-\begin{rSection}{Conference Participation and Presentations}
-
-\textbf{2024:} Annual Conference on Innovative Applications of Artificial Intelligence, Midwest Political Science Association Annual Conference (x2), American Political Science Association Conference (x2) \vspace{2mm}
-
-\textbf{2023:} Midwest Political Science Association Annual Conference, MapleMeth, American Political Science Association Conference (x2), The Association of Internet Researchers Conference, The Center for C-SPAN Scholarship \& Engagement Conference \vspace{2mm}
-
-\textbf{2022:} International Studies Association Annual Convention, Association for the Study of the Middle East and Africa Annual Conference, National Communication Association Annual Convention \vspace{2mm}
-
-\textbf{2021:} International Studies Association-Midwest Annual Conference (x2), International Studies Association Joint Human Rights Conference, International Conference of the Digital Humanities Association of Nigeria, American Marketing Association Winter Academic Conferences, Pi Sigma Alpha Undergraduate Research Conference \vspace{2mm}
-
-\textbf{2020:} Association for the Study of the Middle East and Africa Annual Conference, International Studies Association-Midwest Annual Conference, Southern Political Science Association Annual Conference, Pi Sigma Alpha Undergraduate Research Conference 
-
-\textbf{2019:} International Studies Association-Midwest Annual Conference, Oakland University Research Symposium (x2), Association for the Study of the Middle East and Africa Annual Conference, Pi Sigma Alpha Undergraduate Research Conference
-
-
-
-\end{rSection}
-
-
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\Huge{Your Name} \\[7.5pt]
+\href{https://github.com/username}{\raisebox{-0.05\height}\faGithub\ username} \ $|$ \ 
+\href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
+\href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
+\href{mailto:email@mysite.com}{\raisebox{-0.05\height}\faEnvelope \ email@mysite.com} \ $|$ \ 
+\href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
+\end{tabularx}
 
 %----------------------------------------------------------------------------------------
-% teaching
-%----------------------------------------------------------------------------------------
-\begin{rSection}{Teaching Experience} %\itemsep -3pt
-\textbf{Purdue University:}
-
-{\it Independent Instructor}
-\\Global Green Politics (Summer 2022, Summer 2023, Asynchronous Online)
-
-{\it Workshops}
-\\Introduction to Mathematics for Political Science Graduate Students (Fall 2022, Fall 2023, Fall 2024)
-
-{\it Teaching Assistant}
-\\Graduate Courses
-\\MLE, Machine Learning, and Regime Change (Spring 2024, Dr. Joan Timoneda)
-
-\\Undergraduate Courses
-\\Introduction to Political Analysis (Fall 2024, Dr. Miriam Barnum)
-\\Introduction to Environmental Policy (Fall 2023, Dr. Shan Zhou)
-\\International Relations Among Rich and Poor Nations (Spring 2022, Dr. Kevin Taber)
-\\Global Green Politics (Fall 2021, Dr. Kevin Taber)
-
-{\it Guest Lectures}
-\\International Relations Among Rich and Poor Nations (Spring 2022)
-\\Transformative Texts: Critical Thinking \& Communication II: Modern World (Fall 2021)
-
-{\it Teaching Certificates} 
-\\Teaching Through Online Forums/Discussions Mini Course (2023)
-\\IMPACT-X Course Redesign (2022) (\$1,000 to Develop Course)
-\\Certificate of Foundations in College Teaching (2021)
-
-\end{rSection}
-
-
-% SERVICE %
-
-\begin{rSection}{Service}
-
-{\it Purdue University (Department)}  \\
-Recruitment and Mentoring Chair (Graduate Student Association, 2024-2025)
-\\Graduate Student Representative (Assistant Professor -- AI, Search Committee, 2023)
-\\Student Project Supervisor x3 (Undergraduate Research Collaboratory, 2023)
-\\Graduate Representative (2022-2023, 2024-2025) 
-\\Student Project Supervisor x2 (Undergraduate Research Collaboratory, 2022)
-\\Social Science Mechanics Chair (Graduate Student Association, 2021-2022)
-\\Student Project Supervisor (Undergraduate Research Collaboratory, 2021)
-
-{\it Purdue University (University)} 
-\\Judge/Reviewer, Spring Undergraduate Research Conference (2024)
-\\Graduate Representative (College of Liberal Arts Diversity, Equity, and Inclusion Committee, 2021-2022 \& 2022-2023)
-\\Judge/Reviewer, Spring Undergraduate Research Conference (2023)
-\\Judge/Reviewer, Fall Undergraduate Research Conference (2022)
-
-{\it Oakland University (University)} 
-\\Student Representative (College of Arts \& Sciences Dean Search Committee, 2020-2021)
-\\Associate Chair (Student Activities Funding Board, 2019-2020)
-\\Student Representative (Academic Standing and Honors Committee, 2019-2020)
-
-
-{\it The Discipline} 
-\\Discussant, National Pi Sigma Alpha Undergraduate Conference (2024) x2
-\\Chair, National Pi Sigma Alpha Undergraduate Conference (2024)
-\\Discussant, National Pi Sigma Alpha Undergraduate Conference (2023) x2
-\\Discussant, National Pi Sigma Alpha Undergraduate Conference (2022) x2
-\\Organizer and Discussant, Undergraduate Research Panel (International Studies Association-Midwest, 2021)
-\\Assistant Editor, International Journal of Human Rights (2021-2022)
-\\Social Media Editor, International Journal of Human Rights (2021-2022)
-\\Student Representative, Pi Sigma Alpha Undergraduate Research Conference Planning Committee (Virtual, 2021)
-\\Editor, Pi Sigma Alpha Undergraduate Journal of Politics (Oakland University, 2018-2020)
-
-% {\it Undergraduate Mentorship}
-% \\\textit{The Aftermath of War: Explaining Racism in Sri Lanka} 
-
-{\it Journal Reviewer}
-\\\textit{PS: Political Science \& Politics}, \textit{Journal of Quantitative Description: Digital Media}
-
-{\it Research Assistantships} 
-\\Dr. Cherie Maestas (Purdue University, Summer 2024)
-\\Dr. Andy Baker (Purdue University, Fall 2023, Summer 2024)
-\\Dr. Joan Timoneda (Purdue University, Fall 2022, Spring 2024)
-\\Dr. Daniel Schiff (Purdue University, Summer 2023)
-\\Dr. Tara Grillos (Purdue University, Spring 2023)
-\\Dr. Rosie Clawson (Purdue University, Summer 2022)
-\\Dr. Terri Towner (Oakland University, 2020)
-
-{\it Additional Work} 
-%Course Builder, McGraw-Hill (2022)
-\\Conflict Analysis Intern, The U.S. Department of State Bureau of Conflict \& Stabilization Operations in Africa (Remote, 2020-2021)
-\\Field Director for Oakland University, Elissa Slotkin for Congress (2020)
-\\City Treasurer Intern, The City of Rochester (Virtual, 2020)
-\\Policy Analyst Intern, USAID on the African Union in the 21st Century (Virtual, 2019-2020)
-\\Volunteer, HeadCount Voter Registration (2018)
-\\Legislative Assistant, Michigan State Senate (2016-2017)
-
-
-\end{rSection}
-
-
-%	Fellowships
+% EDUCATION
 %----------------------------------------------------------------------------------------
 
-\begin{rSection}{Software} 
-Contributor to PykTok \href{https://github.com/dfreelon/pyktok}{\faIcon{desktop}} 
-\end{rSection}
+\section{Work Experience}
+
+\begin{jobshort}{Purdue University, West Lafayette, IN}{Expected: 2026}
+Ph.D., Political Science
+Major Field: Comparative Politics, Minor Field: Political Research Methodology
+\end{jobshort}
 
 
+\begin{joblong}{Designation}{Mar 2019 - Jan 2021}
+\item long long line of blah blah that will wrap when the table fills the column width
+\item again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah
+\end{joblong}
+  
+%Projects
+\section{Projects}
 
-%\\Legacy Leadership Cohort (Oakland University, 2019)
-
-
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
+\end{tabularx}
 
 %----------------------------------------------------------------------------------------
-%	invited talks
+%	EDUCATION
 %----------------------------------------------------------------------------------------
+\section{Education}
+\begin{tabularx}{\linewidth}{@{}l X@{}}	
+2030 - present & PhD (Subject) at \textbf{University} \hfill \normalsize (GPA: 4.0/4.0) \\
 
-\begin{rSection}{Invited Talks}
+2023 - 2027 & Bachelor's Degree at \textbf{College} \hfill (GPA: 4.0/4.0) \\ 
 
-Watering Down Watermarks: The Effectiveness of Labeling Deepfakes. \textit{Elon University, The Turnage Family Faculty Innovation \& Creativity Fund}. 2024.
+2022 & Class 12th Some Board \hfill  (Grades) \\
 
-Framing ISIL: The Media's Photo Discrimination between Africa, Europe, and the United States. For The \emph{Overseas Dispatch Lecture Series}. 2021.
+2021 & Class 10th Some Board \hfill  (Grades) \\
+\end{tabularx}
 
-How to Get Published. For the \emph{Culture of Creativity: Nonfiction Workshop}. 2021.
+%----------------------------------------------------------------------------------------
+%	PUBLICATIONS
+%----------------------------------------------------------------------------------------
+\section{Publications}
+\begin{refsection}[citations.bib]
+\nocite{*}
+\printbibliography[heading=none]
+\end{refsection}
 
-\end{rSection}
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Some Skills &  \normalsize{This, That, Some of this and that etc.}\\
+Some More Skills  &  \normalsize{Also some more of this, Some more that, And some of this and that etc.}\\  
+\end{tabularx}
 
-% Professional memberships %
-\begin{rSection} {Professional Memberships}
-Computational Social Science Lab (Purdue University)
-\\Governance and Responsible AI Lab (Purdue University)
-\\American Political Science Association
-\\Association for the Study of the Middle East and Africa
-\\International Studies Association
-\\Pi Sigma Alpha, National Political Science Honorary (Nu Omega President, 2020)
-\\Midwest Political Science Association
-
-\end{rSection}
-
-% Skills %
-\begin{rSection}{Skills}
-{\it Software}: R, Python, oTree, \LaTeX, Qualtrics
-
-
-%oTree, Python
-
-{\it Languages}: English (Native), French (Intermediate)
-
-\end{rSection}
+\vfill
+\center{\footnotesize Last updated: \today}
 
 \end{document}
